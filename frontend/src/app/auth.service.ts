@@ -20,7 +20,7 @@ interface AuthResponse {
 }
 
 // URL de base de votre backend
-const API_BASE_URL = 'http://localhost:3000/api'; 
+const API_BASE_URL = 'https://api-test-htff.onrender.com/api'; 
 
 @Injectable({
   providedIn: 'root' // Le service est disponible globalement dans l'application
@@ -51,7 +51,7 @@ export class AuthService {
 
     return this.http.get<any>(urlWithCacheBuster);
   }
-  
+
 uploadFile(file: File): Observable<any> {
     const formData = new FormData();
     formData.append('articleFile', file, file.name);

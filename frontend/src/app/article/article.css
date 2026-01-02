@@ -1,95 +1,68 @@
-.articles-container {
-  min-height: 100vh;
-  padding: 30px;
-  background-color: #f5f9ff;
+/* Centrage de la page et conteneur principal */
+.container {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-.page-title {
-  text-align: center;
-  color: #1e3a8a;
-  font-size: 28px;
-  margin-bottom: 30px;
+/* Style de la zone d'upload */
+.upload-section {
+    border: 2px dashed #007bff; /* Bordure stylisée pour l'upload */
+    border-radius: 10px;
+    background-color: #f8f9fa; /* Fond légèrement grisé */
 }
 
-.loading,
-.error,
-.empty {
-  text-align: center;
-  font-size: 16px;
-  color: #475569;
+.upload-section h4 {
+    color: #007bff;
+    margin-bottom: 15px;
 }
 
-.error {
-  color: #dc2626;
+/* Style général des cartes de fichiers */
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    /* Assure que toutes les cartes ont la même hauteur */
+    height: 100%; 
 }
 
-/* Grid */
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 25px;
+/* Effet au survol pour les cartes */
+.card:hover {
+    transform: translateY(-5px); /* Légère levée */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Ombre plus prononcée */
 }
 
-/* Card */
-.article-card {
-  background: #ffffff;
-  border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.25s ease;
+/* Titre du fichier dans la carte */
+.card-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Ajoute des points de suspension si le titre est trop long */
+    margin-bottom: 10px;
 }
 
-.article-card:hover {
-  transform: translateY(-6px);
+/* Texte des métadonnées (ID et Date) */
+.card-text {
+    line-height: 1.4;
+    color: #6c757d;
 }
 
-/* Header */
-.card-header {
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
-  padding: 20px;
-  text-align: center;
-  border-radius: 14px 14px 0 0;
+/* Bouton Voir le PDF */
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
 }
 
-.file-icon {
-  font-size: 34px;
+.btn-info:hover {
+    background-color: #138496;
+    border-color: #138496;
 }
 
-/* Body */
-.card-body {
-  padding: 20px;
-  flex-grow: 1;
+/* Pour s'assurer que les messages de feedback sont bien visibles */
+.alert {
+    margin-top: 15px;
+    font-size: 0.9em;
 }
 
-.article-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #1e293b;
-}
-
-.article-date {
-  font-size: 13px;
-  color: #64748b;
-  margin-top: 6px;
-}
-
-/* Footer */
-.card-footer {
-  padding: 15px;
-  border-top: 1px solid #e5e7eb;
-  text-align: center;
-}
-
-.download-btn {
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  padding: 9px 18px;
-  border-radius: 9px;
-  cursor: pointer;
-}
-
-.download-btn:hover {
-  background-color: #1e40af;
+/* Règle pour l'espacement des messages */
+.small.ms-2 {
+    font-size: 0.8em;
 }

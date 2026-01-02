@@ -3,6 +3,8 @@ import { OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, DatePipe, NgFor, NgIf } from '@angular/common';
+import { FileItem, FileService } from '../file.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 interface ArticleFile { _id: string; originalName: string; uploadDate: string; filePath: string; }
 
@@ -14,60 +16,48 @@ interface ArticleFile { _id: string; originalName: string; uploadDate: string; f
   styleUrl: './article.css',
 })
 export class Article implements OnInit {
-   articles: ArticleFile[] = [];
-  loading = false;
-  errorMessage = '';
+  files: FileItem[] = [];
+    // Propriétés d'upload à supprimer :
+    // selectedFile: File | null = null;
+    // uploading = false;
+    errorMessage: string | null = null;
+    // successMessage: string | null = null; // Peut être conservé pour les messages de l'API
 
-  // ⚠️ REMPLACE par ton vrai project id Supabase
-  private readonly SUPABASE_PUBLIC_BASE_URL =
-    'https://weyxuvweqvnbdtkjmtob.supabase.co/storage/v1/object/public/articles2/';
+    constructor(private fileService: FileService) { }
 
-  constructor(private authService: AuthService) {}
+    ngOnInit(): void {
+        this.loadPublicFiles();
+    }
 
-  ngOnInit(): void {
-    this.fetchArticles();
-  }
-
-  fetchArticles(): void {
-        this.loading = true;
-        this.errorMessage = ''; // ✅ REMETTRE À ZÉRO avant l'appel
-
-        this.authService.getPublicFiles().subscribe({
-            next: (data) => {
-                this.articles = data;
-                this.loading = false;
-                // Si la récupération réussit, errorMessage est déjà ''
+    /**
+     * Charge les fichiers publics depuis l'API. (CONSERVÉE)
+     */
+    loadPublicFiles(): void {
+        this.fileService.getPublicFiles().subscribe({
+            next: (data: FileItem[]) => {
+                this.files = data;
+                this.errorMessage = null; // Réinitialise l'erreur si la récupération réussit
             },
-            error: (error) => {
-                console.error(error);
-                this.errorMessage = 'Erreur lors du chargement des articles.';
-                this.loading = false;
+            error: (err: HttpErrorResponse) => {
+                console.error('Erreur lors du chargement des fichiers:', err);
+                this.errorMessage = 'Impossible de charger la liste des fichiers.';
             }
         });
     }
 
-  /**
-   * 🔗 Construit et retourne l'URL Supabase complète du fichier
-   */
-  getFileUrl(filePath: string): string {
-    if (!filePath) {
-      return '';
-    }
+    // Méthodes d'upload à supprimer :
+    // onFileSelected(event: any): void { ... }
+    // onUpload(): void { ... }
 
-    // Si jamais le backend renvoie déjà une URL complète
-    if (filePath.startsWith('http')) {
-      return filePath;
-    }
-
-    return this.SUPABASE_PUBLIC_BASE_URL + filePath;
-  }
-
-  /**
-   * ⬇ Téléchargement / ouverture du fichier
-   */
-  downloadArticle(filePath: string): void {
-    const url = this.getFileUrl(filePath);
-    window.open(url, '_blank');
-  }
-
+    /**
+     * Ouvre le lien public du fichier dans un nouvel onglet. (CONSERVÉE)
+     */
+    openFile(file: FileItem): void {
+        // Utilise le champ 'publicUrl' que le backend va maintenant renvoyer
+        if (file.publicUrl) {
+            window.open(file.publicUrl, '_blank');
+        } else {
+            this.errorMessage = 'Lien de fichier introuvable. Veuillez réessayer.';
+        }
+    }
 }

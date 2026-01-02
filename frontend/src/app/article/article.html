@@ -1,58 +1,29 @@
-<div class="articles-container">
+<div class="container mt-5">
+    <hr>
 
-  <h1 class="page-title">📄 Articles disponibles</h1>
+    <h4 class="mb-3">Fichiers Publics Disponibles ({{ files.length }})</h4>
 
-  <!-- Loader -->
-  <div *ngIf="loading" class="loading">
-    Chargement des articles...
-  </div>
+    <div class="row">
+        <div *ngIf="files.length === 0 && !errorMessage" class="col-12">
+            <p>Aucun fichier PDF n'est disponible pour le moment.</p>
+        </div>
 
-  <!-- Erreur -->
-  <div *ngIf="errorMessage" class="error">
-    {{ errorMessage }}
-  </div>
-
-  <!-- Aucun article -->
-  <div *ngIf="!loading && articles.length === 0" class="empty">
-    Aucun article disponible pour le moment.
-  </div>
-
-  <!-- Liste des articles -->
-  <div class="cards-grid" *ngIf="articles.length > 0">
-
-    <div class="article-card" *ngFor="let article of articles">
-
-      <div class="card-header">
-        <span class="file-icon">📘</span>
-      </div>
-
-      <div class="card-body">
-        <h3 class="article-title">
-          {{ article.originalName }}
-        </h3>
-
-        <p class="article-date">
-          Publié le {{ article.uploadDate | date:'dd/MM/yyyy' }}
-        </p>
-      </div>
-
-      <div class="card-footer">
-        <button
-          class="download-btn"
-          (click)="downloadArticle(article.filePath)">
-          ⬇ Télécharger
-        </button>
-      </div>
-
-      <!-- (OPTIONNEL) affichage de l'URL texte -->
-      <!--
-      <div class="file-url">
-        {{ getFileUrl(article.filePath) }}
-      </div>
-      -->
-
+        <div *ngFor="let file of files" class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-truncate">{{ file.originalName }}</h5>
+                    <p class="card-text text-muted small">
+                        ID: {{ file._id }}<br>
+                        Date: {{ file.uploadDate | date: 'mediumDate' }}
+                    </p>
+                    <button class="btn btn-sm btn-info text-white" 
+                            (click)="openFile(file)" 
+                            [disabled]="!file.publicUrl">
+                        Voir le PDF
+                    </button>
+                    <span *ngIf="!file.publicUrl" class="text-danger small ms-2">Lien manquant</span>
+                </div>
+            </div>
+        </div>
     </div>
-
-  </div>
-
 </div>
