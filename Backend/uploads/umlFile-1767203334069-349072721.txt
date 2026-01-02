@@ -1,0 +1,89 @@
+*1. Classe Livre*
+
+```java
+public class Livre {
+    String titre;
+    String nomAuteur;
+    String prenomAuteur;
+    String categorie;
+    String isbn;
+    String codeEnregistrement;
+
+    // Constructeur
+    public Livre(String titre, String nomAuteur, String prenomAuteur, String categorie, String isbn) {
+        this.titre = titre;
+        this.nomAuteur = nomAuteur;
+        this.prenomAuteur = prenomAuteur;
+        this.categorie = categorie;
+        this.isbn = isbn;
+        this.codeEnregistrement = calculerLeCode();
+    }
+
+    // Méthode pour afficher les caractéristiques
+    public void afficherUnLivre() {
+        System.out.println("Titre : " + titre);
+        System.out.println("Auteur : " + prenomAuteur + " " + nomAuteur);
+        System.out.println("Catégorie : " + categorie);
+        System.out.println("ISBN : " + isbn);
+        System.out.println("Code d'enregistrement : " + codeEnregistrement);
+    }
+
+    // Méthode pour calculer le code d'enregistrement
+    public String calculerLeCode() {
+        String nomCode = nomAuteur.length() >= 2 ? nomAuteur.substring(0, 2) : nomAuteur;
+        String prenomCode = prenomAuteur.length() >= 2 ? prenomAuteur.substring(0, 2) : prenomAuteur;
+
+String isbnCode = isbn.length() >= 2 ? isbn.substring(isbn.length() - 2) : isbn;
+        return nomCode.toUpperCase() + prenomCode.toUpperCase() + categorie.toUpperCase() + isbnCode;
+    }
+}
+
+
+---
+
+*2. Classe `LivrePoche` (hérite de `Livre`)*
+
+java
+public class LivrePoche extends Livre {
+    public LivrePoche(String titre, String nomAuteur, String prenomAuteur, String categorie, String isbn) {
+        super(titre, nomAuteur, prenomAuteur, categorie, isbn);
+    }
+}
+
+
+---
+
+*3. Application `Bibliotheque`*
+
+java
+import java.util.Scanner;
+
+public class Bibliotheque {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Titre : ");
+        String titre = scanner.nextLine();
+
+        System.out.print("Nom de l’auteur : ");
+        String nom = scanner.nextLine();
+
+        System.out.print("Prénom de l’auteur : ");
+        String prenom = scanner.nextLine();
+
+        System.out.print("Catégorie (Policier, Roman, Junior, Philosophie, Science-fiction) : ");
+        String categorie = scanner.nextLine();
+
+        System.out.print("ISBN : ");
+        String isbn = scanner.nextLine();
+
+        LivrePoche livre = new LivrePoche(titre, nom, prenom, categorie, isbn);
+
+        // Affichage des infos du livre
+
+livre.afficherUnLivre();
+    }
+}
+```
+
+---
