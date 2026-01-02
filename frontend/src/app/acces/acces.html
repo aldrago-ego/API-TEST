@@ -1,0 +1,42 @@
+<div class="access-container">
+    <div class="header-access">
+        <h2>XML PROJECT - Portail d'Accès</h2>
+        <p class="instruction">Veuillez décliner votre identité :</p>
+    </div>
+
+    <div class="card-grid" *ngIf="!showComiteOptions">
+        
+        <div class="access-card" (click)="goTo('/accueil')">
+            <span class="icon">👤</span>
+            <h3>Je suis un utilisateur lambda</h3>
+            <p>Accès direct à la consultation des publications et des articles.</p>
+            <button class="btn btn-primary">Entrer sur le site</button>
+        </div>
+
+        <div class="access-card comite" (click)="selectComite()">
+            <span class="icon">🛠️</span>
+            <h3>Je fais partie du comité</h3>
+            <p>Accès aux fonctionnalités d'administration et d'upload de fichiers.</p>
+            <button class="btn btn-secondary">Options du comité</button>
+        </div>
+    </div>
+
+    <div class="card-grid" *ngIf="showComiteOptions">
+
+        <h3 class="comite-prompt">Que souhaitez-vous faire ?</h3>
+
+        <div class="access-card" (click)="goTo('/accueil')">
+            <span class="icon">➡️</span>
+            <h3>Accéder directement au site ?</h3>
+            <p>Consulter les pages publiques (Accueil, Publications) sans authentification.</p>
+            <button class="btn btn-secondary">Continuer sans login</button>
+        </div>
+
+        <div class="access-card" (click)="goTo('/login')">
+            <span class="icon">🔐</span>
+            <h3>Upload de fichier / Administration</h3>
+            <p>Nécessite une authentification par JWT pour accéder à la zone d'administration.</p>
+            <button class="btn btn-primary">Se connecter</button>
+        </div>
+    </div>
+</div>

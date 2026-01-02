@@ -1,0 +1,33 @@
+<div class="intro-banner">
+    <h1>XML PROJECT : Démonstration d'une Architecture API REST</h1>
+    <p class="subtitle">
+        Cette application sert de support à notre exposé sur les API, illustrant la gestion des utilisateurs, la sécurisation des données par Token et l'Upload de documents.
+    </p>
+</div>
+<section class="features-grid">
+    <div class="feature-card">
+        <span class="icon">🔒</span>
+        <h3>Authentification Sécurisée (Login)</h3>
+        <p>Gérée par une API backend (Node.js/Express) qui attribue des jetons **JWT** pour garantir l'accès aux zones sensibles.</p>
+    </div>
+    
+    <div class="feature-card">
+        <span class="icon">📤</span>
+        <h3>Upload de Documents</h3>
+        <p>Démonstration d'une requête **POST** sécurisée pour l'envoi du document final de l'exposé, gérée côté serveur par Multer.</p>
+    </div>
+    
+    <div class="feature-card">
+        <span class="icon">📄</span>
+        <h3>Consultation d'Articles</h3>
+        <p>Interface publique permettant de récupérer et d'afficher le contenu (via une requête **GET**), illustrant le rôle du Frontend (Angular).</p>
+    </div>
+</section>
+<section class="cta-section">
+    <h2>Explorez les Fonctionnalités</h2>
+    <div class="cta-buttons">
+        <a routerLink="/article" class="btn btn-primary">Voir les Publications</a>
+        
+        <a routerLink="/membres" class="btn btn-secondary">Accéder aux Membres</a>
+    </div>
+</section>

@@ -1,0 +1,58 @@
+<div class="articles-container">
+
+  <h1 class="page-title">📄 Articles disponibles</h1>
+
+  <!-- Loader -->
+  <div *ngIf="loading" class="loading">
+    Chargement des articles...
+  </div>
+
+  <!-- Erreur -->
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Aucun article -->
+  <div *ngIf="!loading && articles.length === 0" class="empty">
+    Aucun article disponible pour le moment.
+  </div>
+
+  <!-- Liste des articles -->
+  <div class="cards-grid" *ngIf="articles.length > 0">
+
+    <div class="article-card" *ngFor="let article of articles">
+
+      <div class="card-header">
+        <span class="file-icon">📘</span>
+      </div>
+
+      <div class="card-body">
+        <h3 class="article-title">
+          {{ article.originalName }}
+        </h3>
+
+        <p class="article-date">
+          Publié le {{ article.uploadDate | date:'dd/MM/yyyy' }}
+        </p>
+      </div>
+
+      <div class="card-footer">
+        <button
+          class="download-btn"
+          (click)="downloadArticle(article.filePath)">
+          ⬇ Télécharger
+        </button>
+      </div>
+
+      <!-- (OPTIONNEL) affichage de l'URL texte -->
+      <!--
+      <div class="file-url">
+        {{ getFileUrl(article.filePath) }}
+      </div>
+      -->
+
+    </div>
+
+  </div>
+
+</div>

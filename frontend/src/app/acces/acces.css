@@ -1,0 +1,96 @@
+/* Palette : #001f3f (Bleu Marine), #FFFFFF (Blanc), #0074D9 (Bleu Cobalt) */
+
+.access-container {
+    padding: 80px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f7f6; /* Fond très léger */
+}
+
+.header-access {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.header-access h2 {
+    color: #001f3f;
+    font-size: 2.2em;
+}
+
+.instruction {
+    color: #555;
+    font-size: 1.1em;
+}
+
+.comite-prompt {
+    width: 100%;
+    margin-bottom: 30px;
+    color: #0074D9;
+}
+
+/* Grille des cartes */
+.card-grid {
+    display: flex;
+    gap: 40px;
+    max-width: 1000px;
+    width: 100%;
+    justify-content: center;
+}
+
+.access-card {
+    flex: 1;
+    background-color: #FFFFFF;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.access-card:hover {
+    border-color: #0074D9; /* Bordure Bleu Cobalt au survol */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+.icon {
+    font-size: 3em;
+    color: #0074D9;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.access-card h3 {
+    color: #001f3f;
+    margin-bottom: 15px;
+}
+
+.access-card p {
+    color: #777;
+    margin-bottom: 30px;
+}
+
+/* Styles des boutons (à réutiliser dans toutes les pages) */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #0074D9;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #f8f9fa;
+    border: 2px solid #0074D9;
+    color: #0074D9;
+}

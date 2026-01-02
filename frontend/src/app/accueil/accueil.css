@@ -1,0 +1,100 @@
+/* Conteneur principal */
+.home-container {
+    padding: 40px 8%;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Introduction */
+.intro-banner {
+    margin-bottom: 50px;
+}
+
+.intro-banner h1 {
+    color: #001f3f; /* Bleu Marine pour le titre */
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #555;
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+/* Grille de Fonctionnalités (Les cartes) */
+.features-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.feature-card {
+    flex: 1;
+    background-color: #f8f9fa; /* Gris très clair */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Légère ombre */
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px); /* Petit effet de soulèvement au survol */
+}
+
+.icon {
+    font-size: 2.5em;
+    color: #0074D9; /* Bleu Cobalt pour les icônes */
+    margin-bottom: 15px;
+    display: block;
+}
+
+.feature-card h3 {
+    color: #001f3f;
+    margin-bottom: 10px;
+}
+
+/* Appel à l'Action (CTA) */
+.cta-section {
+    padding: 30px 0;
+    border-top: 1px solid #eee;
+}
+
+.cta-buttons {
+    margin-top: 25px;
+}
+
+/* Styles des boutons (à réutiliser dans toutes les pages) */
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #0074D9; /* Bleu Cobalt */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid #0074D9;
+    color: #0074D9;
+}
+
+.btn-secondary:hover {
+    background-color: #0074D9;
+    color: white;
+}

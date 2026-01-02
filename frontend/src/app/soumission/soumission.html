@@ -1,0 +1,47 @@
+<div class="upload-container">
+    <div class="upload-box">
+        <h2 class="title">Soumettre un Nouvel Article</h2>
+        <p class="subtitle">Veuillez télécharger un fichier au format PDF (max. 5 Mo).</p>
+        
+        <div class="file-input-group">
+            <label for="fileInput" class="custom-file-label">
+                <span *ngIf="!selectedFile">Choisir un Fichier PDF</span>
+                <span *ngIf="selectedFile">Modifier la sélection</span>
+            </label>
+            <input 
+                type="file" 
+                id="fileInput" 
+                (change)="onFileSelected($event)" 
+                accept="application/pdf" 
+                class="file-input"
+            >
+            
+            <p *ngIf="selectedFile" class="file-info">
+                Fichier sélectionné : 
+                <strong>{{ selectedFile.name }}</strong> 
+                ({{ selectedFile.size / 1024 | number:'1.0-2' }} Ko)
+            </p>
+        </div>
+
+      <div class="status-messages">
+    <div *ngIf="uploadSuccess" class="success-message">
+        ✅ **{{ selectedFile?.name || 'Fichier' }} téléchargé avec succès !**
+        <p>Redirection vers la page des articles dans quelques instants...</p>
+    </div>
+
+            <button 
+                (click)="onUpload()" 
+                [disabled]="!selectedFile || uploading" 
+                class="btn-primary upload-btn"
+            >
+                <span *ngIf="!uploading">
+                    Soumettre l'Article
+                </span>
+                <span *ngIf="uploading">
+                    Téléchargement en cours...
+                </span>
+            </button>
+        </div>
+        
+    </div>
+</div>

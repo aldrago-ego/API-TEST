@@ -1,0 +1,62 @@
+/* Palette : #001f3f (Bleu Marine), #FFFFFF (Blanc), #0074D9 (Bleu Cobalt) */
+
+.navbar {
+    background-color: #001f3f; /* Fond Bleu Marine */
+    color: #FFFFFF; /* Texte en Blanc */
+    height: 60px;
+    display: flex;
+    justify-content: space-between; /* Pour séparer les trois zones */
+    align-items: center; /* Pour centrer verticalement le contenu */
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Petite ombre pour un effet 3D */
+}
+
+/* --- 1. Zone Logo et Titre --- */
+.logo-area {
+    display: flex;
+    align-items: center;
+    min-width: 250px; /* Assure un espace minimum */
+}
+
+.logo-img {
+    height: 30px; /* Taille du logo */
+    margin-right: 10px;
+}
+
+.project-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    font-style: italic; /* L'effet italique demandé */
+    letter-spacing: 1px;
+}
+
+/* --- 2. Zone des Liens Centrés --- */
+.nav-links {
+    flex-grow: 1; /* Permet à cette zone de prendre l'espace restant */
+    text-align: center; /* Centre le contenu de cette div */
+}
+
+.nav-links a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 10px 15px;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Léger surlignage au survol */
+}
+
+/* Style du lien actif (routerLinkActive) */
+.active-link {
+    color: #0074D9 !important; /* Couleur d'accent (Bleu Cobalt) pour le lien actif */
+    border-bottom: 3px solid #0074D9;
+}
+
+/* --- 3. Zone Utilisateur (Vide pour l'instant) --- */
+.user-area {
+    min-width: 250px; /* Pour maintenir l'équilibre avec le côté gauche */
+}
